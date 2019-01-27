@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  test:
+  black:
     docker:
       - image: python:3-alpine
     steps:
@@ -11,13 +11,18 @@ jobs:
       - run:
           name: Run Black
           command: black --check .
-
+  unit_test:
+    docker:
+      - image: python:3-alpine
+    steps:
+      - checkout
       - run:
           name: Run Tests
           command: python3 test.py
 
 workflows:
   version: 2
-  build_and_deploy:
+  tests:
     jobs:
-      - test
+      - black
+      - unit_test
