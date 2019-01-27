@@ -11,7 +11,7 @@ jobs:
       - run:
           name: Run Black
           command: black --check .
-  black:
+  bandit:
     docker:
       - image: python:3-alpine
     steps:
