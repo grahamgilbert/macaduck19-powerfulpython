@@ -1,13 +1,23 @@
 version: 2
 jobs:
-  build:
+  test:
     docker:
       - image: python:3-alpine
     steps:
       - checkout
       - run:
-          name: Greeting
-          command: echo Hello, world.
+          name: Install Black
+          command: pip install black
       - run:
-          name: Print the Current Time
-          command: date
+          name: Run Black
+          command: black --check .
+
+      - run:
+          name: Run Tests
+          command: python3 test.py
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - test
