@@ -11,17 +11,6 @@ jobs:
       - run:
           name: Run Black
           command: black --check .
-  bandit:
-    docker:
-      - image: python:3-alpine
-    steps:
-      - checkout
-      - run:
-          name: Install Bandit
-          command: pip install bandit
-      - run:
-          name: Run Bandit
-          command: bandit -r .
   unit_test:
     docker:
       - image: python:3-alpine
@@ -36,5 +25,4 @@ workflows:
   tests:
     jobs:
       - black
-      - bandit
       # - unit_test
