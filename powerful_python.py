@@ -9,7 +9,7 @@ def requires_reboot(cmd_output):
     Output: Boolean.
     """
     if "restart" in cmd_output.lower():
-        return "True"
+        return True
     else:
         return False
 
