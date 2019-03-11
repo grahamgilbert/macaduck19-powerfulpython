@@ -15,10 +15,7 @@ def requires_reboot(cmd_output):
 
 
 def main():
-    cmd = [
-        "/usr/sbin/softwareupdate",
-        "-dla"
-    ]
+    cmd = ["/usr/sbin/softwareupdate", "-dla"]
     output = subprocess.check_output(cmd)
     if requires_reboot == True:
         subprocess.call(["/sbin/reboot"])
