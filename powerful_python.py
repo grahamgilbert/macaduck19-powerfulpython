@@ -11,7 +11,7 @@ def requires_reboot(cmd_output):
     if "restart" in cmd_output.lower():
         return True
     else:
-        return "False"
+        return False
 
 
 def main():
