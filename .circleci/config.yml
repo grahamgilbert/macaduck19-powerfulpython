@@ -6,6 +6,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Build dependencies
+          command: apk add build-base
+      - run:
           name: Install Black
           command: pip install black
       - run:
